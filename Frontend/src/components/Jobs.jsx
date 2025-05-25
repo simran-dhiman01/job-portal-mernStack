@@ -12,23 +12,13 @@ const Jobs = () => {
     const [filterJobs, setFilterJobs] = useState(allJobs);
 
     useEffect(() => {
-        if (searchedQuery) {
-            console.log("Search Query:", searchedQuery);
-            console.log("All Jobs Before Filter:", allJobs);
-            
+        if (searchedQuery) {            
             const filteredJobs = allJobs.filter((job) => {
-                const lowerQuery = searchedQuery.toLowerCase().trim();
-                console.log("Current Query:", lowerQuery);
-                
+                const lowerQuery = searchedQuery.toLowerCase().trim();                
                 // Handle salary range filters
                 if (lowerQuery.includes("lpa") || lowerQuery.includes("k")) {
                     const salary = job.salary;
-                    console.log("Checking Job:", {
-                        title: job.title,
-                        salary: salary,
-                        query: lowerQuery
-                    });
-                    
+                   
                     // Exact string matching for salary ranges
                     if (lowerQuery === "0-40k") {
                         return salary <= 0.4;
@@ -38,13 +28,6 @@ const Jobs = () => {
                         return salary > 1 && salary <= 5;
                     } else if (lowerQuery === "5lpa - 10lpa") {
                         const isInRange = salary >= 5 && salary <= 10;
-                        console.log("5-10LPA Check:", { 
-                            jobTitle: job.title,
-                            salary: salary,
-                            isInRange: isInRange,
-                            range: "5-10LPA",
-                            query: lowerQuery
-                        });
                         return isInRange;
                     } else if (lowerQuery === "above 10lpa") {
                         return salary > 10;
@@ -58,7 +41,6 @@ const Jobs = () => {
                     `${job.salary}LPA`.toLowerCase().includes(lowerQuery);
             });
             
-            console.log("Filtered Jobs:", filteredJobs);
             setFilterJobs(filteredJobs);
         } else {
             setFilterJobs(allJobs);

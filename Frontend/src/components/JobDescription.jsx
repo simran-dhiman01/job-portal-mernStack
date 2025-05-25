@@ -16,12 +16,6 @@ const JobDescription = () => {
     const isIntiallyApplied = singleJob?.applications?.some(application => application.applicant?._id === user?._id) || false;
     const [isApplied, setIsApplied] = useState(isIntiallyApplied);
 
-    // Debug logs
-    console.log('Single Job Data:', singleJob);
-    console.log('TotalOpenings:', singleJob?.TotalOpenings);
-    console.log('jobType:', singleJob?.jobType);
-    console.log('salary:', singleJob?.salary);
-
     const params = useParams()
     const jobId = params.id
 
@@ -29,7 +23,6 @@ const JobDescription = () => {
         const fetchSingleJob = async () => {
             try {
                 const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, { withCredentials: true })
-                console.log('Backend response for single job:', res.data);
                 if (res.data.success) {
                     dispatch(setSingleJob(res.data.job))
                     setIsApplied(res.data.job.applications.some(application=>application.applicant?._id === user?._id)) 
@@ -44,7 +37,6 @@ const JobDescription = () => {
     const applyJobHandler = async () => {
         try {
             const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId}`, {withCredentials:true})
-            console.log(res.data)
             if(res.data.success){
                 setIsApplied(true); // Update the local state
                 const updatedSingleJob = {...singleJob, applications:[...singleJob.applications,{applicant:user?._id}]}

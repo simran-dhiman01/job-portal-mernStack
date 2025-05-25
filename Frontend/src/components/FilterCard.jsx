@@ -27,7 +27,7 @@ const FilterCard = () => {
         setSelectedValue(value);
     }
     useEffect(()=>{
-        //console.log(selectedValue)
+      
         dispatch(setSearchedQuery(selectedValue));
     },[selectedValue]);
   return (

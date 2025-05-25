@@ -1,31 +1,23 @@
 import React from 'react'
 import { Button } from './ui/button'
-import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { Badge } from './ui/badge'
 import { useNavigate } from 'react-router-dom'
 
-const Job = ({job}) => {
+const Job = ({ job }) => {
     const navigate = useNavigate();
-    
-    // Debug logs
-    console.log('Job data received:', job);
-    console.log('TotalOpenings:', job?.TotalOpenings);
-    console.log('jobType:', job?.jobType);
-    console.log('salary:', job?.salary);
 
     const daysAgoFunction = (mongodbTime) => {
         const createdAt = new Date(mongodbTime);
         const currentTime = new Date();
         const timeDifference = currentTime - createdAt;
-        return Math.floor(timeDifference/(1000*24*60*60));
+        return Math.floor(timeDifference / (1000 * 24 * 60 * 60));
     }
-    
+
     return (
         <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100 h-[400px] flex flex-col'>
             <div className='flex items-center justify-between'>
                 <p className='text-sm text-gray-500'>{daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}</p>
-                {/* <Button variant="outline" className="rounded-full" size="icon"><Bookmark /></Button> */}
             </div>
 
             <div className='flex items-center gap-2 my-2'>
@@ -52,8 +44,7 @@ const Job = ({job}) => {
             </div>
 
             <div className='flex items-center gap-4 mt-4'>
-                <Button className='bg-[#7209b7] text-white hover:bg-[#7109b7f0] ' onClick={()=> navigate(`/description/${job?._id}`)} variant="outline">Details</Button>
-                {/* <Button className="bg-[#7209b7] hover:bg-[#7109b7f0]">Save For Later</Button> */}
+                <Button className='bg-[#7209b7] text-white hover:bg-[#7109b7f0] ' onClick={() => navigate(`/description/${job?._id}`)} variant="outline">Details</Button>
             </div>
         </div>
     )

@@ -160,14 +160,7 @@ export const updateProfile = async (req, res) => {
                     });
                 }
 
-                console.log("File received:", {
-                    originalname: req.file.originalname,
-                    mimetype: req.file.mimetype,
-                    size: req.file.size
-                });
-
                 const fileUri = getDataUri(req.file);
-                console.log("File URI generated successfully");
 
                 // Upload to Cloudinary with specific options for PDF
                 const cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
@@ -175,12 +168,6 @@ export const updateProfile = async (req, res) => {
                     folder: "job-portal/resumes",
                     format: "pdf"
                 });
-
-                console.log("Cloudinary upload successful:", {
-                    secure_url: cloudResponse.secure_url,
-                    public_id: cloudResponse.public_id
-                });
-
                 if (cloudResponse) {
                     user.profile.resume = cloudResponse.secure_url;
                     user.profile.resumeOriginalName = req.file.originalname;
