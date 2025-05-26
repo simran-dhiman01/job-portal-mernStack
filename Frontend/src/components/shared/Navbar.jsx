@@ -50,7 +50,7 @@ return (
     <div className='bg-white'>
         <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
             <div>
-                <h1 className='text-2xl font-bold text-blue-900'>Pro<span className='text-[#e00f0f]'>Hire</span></h1>
+                <h1 className='text-2xl font-bold text-blue-900'>Hunt<span className='text-[#e00f0f]'>Jobs</span></h1>
             </div>
             <div className='flex items-center gap-12'>
                 <ul className='flex font-medium items-center cursor-pointer gap-5'>
