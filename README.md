@@ -6,7 +6,7 @@ This project is a **Job Portal Web App** that allows companies to post job listi
 
 ## 🌐 Live Site
 
-🔗 **[Live Demo →](https://job-portal-mernstack-1.onrender.com/)**  
+🔗 **[Live Demo](https://job-portal-mernstack-1.onrender.com/)**  
 
 
 💻 **Technologies**
