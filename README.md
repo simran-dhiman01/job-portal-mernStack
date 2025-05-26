@@ -4,7 +4,10 @@
 
 This project is a **Job Portal Web App** that allows companies to post job listings and job seekers to apply. The platform provides features such as user authentication, job search, and application tracking, making it easier for companies and job seekers to connect.
 
-[Link to live project will be added]
+## 🌐 Live Site
+
+🔗 **[Live Demo →](https://job-portal-mernstack-1.onrender.com/)**  
+
 
 💻 **Technologies**
 - **MERN Stack** (MongoDB, Express, React, Node.js)
