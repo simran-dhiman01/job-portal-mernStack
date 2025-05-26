@@ -5,10 +5,19 @@ import { singleUpload } from "../middlewares/multer.js";
 
 const router = express.Router();
 
-router.route("/register").post(isAuthenticated,registerCompany);
-router.route("/get").get(isAuthenticated,getCompany);
-router.route("/get/:id").get(isAuthenticated,getCompanyById);
-router.route("/update/:id").put(isAuthenticated,singleUpload, updateCompany);
-router.route("/delete/:id").delete(isAuthenticated, deleteCompany);
+// Register a new company
+router.post("/register", isAuthenticated, registerCompany);
+
+// Get all companies
+router.get("/get", isAuthenticated, getCompany);
+
+// Get company by ID
+router.get("/get/:id", isAuthenticated, getCompanyById);
+
+// Update company
+router.put("/update/:id", isAuthenticated, singleUpload, updateCompany);
+
+// Delete company
+router.delete("/delete/:id", isAuthenticated, deleteCompany);
 
 export default router;
