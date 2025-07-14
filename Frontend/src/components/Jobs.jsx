@@ -5,20 +5,20 @@ import Job from './Job';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 
+
 // const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
     const [filterJobs, setFilterJobs] = useState(allJobs);
-
     useEffect(() => {
-        if (searchedQuery) {            
+        if (searchedQuery) {
             const filteredJobs = allJobs.filter((job) => {
-                const lowerQuery = searchedQuery.toLowerCase().trim();                
+                const lowerQuery = searchedQuery.toLowerCase().trim();
                 // Handle salary range filters
                 if (lowerQuery.includes("lpa") || lowerQuery.includes("k")) {
                     const salary = job.salary;
-                   
+
                     // Exact string matching for salary ranges
                     if (lowerQuery === "0-40k") {
                         return salary <= 0.4;
@@ -33,14 +33,14 @@ const Jobs = () => {
                         return salary > 10;
                     }
                 }
-                
+
                 // Regular text search
                 return job.title.toLowerCase().includes(lowerQuery) ||
                     job.description.toLowerCase().includes(lowerQuery) ||
                     job.location.toLowerCase().includes(lowerQuery) ||
                     `${job.salary}LPA`.toLowerCase().includes(lowerQuery);
             });
-            
+
             setFilterJobs(filteredJobs);
         } else {
             setFilterJobs(allJobs);
