@@ -25,7 +25,6 @@ app.use(cookieParser())
 
 const corsOptions ={
     origin:'https://job-portal-mernstack-1.onrender.com',
-    // origin:'http://localhost:5173',
     credentials:true
 } 
 app.use(cors(corsOptions))
