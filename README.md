@@ -28,9 +28,23 @@ This project is a **Job Portal Web App** that allows companies to post job listi
 4. **Install Dependencies**:
     Run the following command to install all necessary dependencies:
     ```bash
+    cd backend
+    ```
+    ```bash
+    npm install
+    ```
+    ```bash
+    cd frontend
+    ```
+    ```bash
     npm install
     ```
 5. **Start the Development Server**:
+    Run the development server with:
+    ```bash
+    node index.js
+    ```
+6. **Start the Development Server**:
     Run the development server with:
     ```bash
     npm run dev
